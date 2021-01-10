@@ -138,7 +138,7 @@ exports.createAttempt = (req, res) => {
     });
 };
 
-exports.findAllUserAttempts = (req, res) => {
+exports.findDailyUserData = (req, res) => {
   condition = { email: req.body.email };
   User
     .findOne(condition).populate("attempts")

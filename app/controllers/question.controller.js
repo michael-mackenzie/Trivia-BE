@@ -9,7 +9,8 @@ exports.createQuestion = (req, res) => {
 
   const question = new Question({
     text: req.body.text,
-    answers: req.body.answers
+    answers: req.body.answers,
+    learnMore: req.body.learnMore
   });
 
   question
@@ -31,3 +32,12 @@ exports.findSomeQuestions = (req, res) => {
       res.send(rsp);
     });
 };
+
+exports.deleteAll = (req, res) => {
+  Question
+    .deleteMany({})
+    .then(response => {
+      res.send(response.data);
+      console.log("deleted all")
+    });
+}

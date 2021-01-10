@@ -9,7 +9,8 @@ module.exports = mongoose => {
             isCorrect: Boolean,
             text: String
           }
-        ]
+        ],
+        learnMore: String
       },
       { timestamps: true }
     )

@@ -16,9 +16,9 @@ module.exports = app => {
   router.post("/attempts/create", users.createAttempt);
 
   // Retrieve all daily user attempts
-  router.post("/attempts", users.findAllUserAttempts);
+  router.post("/attempts", users.findDailyUserData);
 
-  // Retrieve user order
+  // Retrieve user leaderboard
   router.get("/leaderboard", users.findUserLeaderboard)
 
   app.use('/api/users', router);
