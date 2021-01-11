@@ -22,4 +22,3 @@ sheets.spreadsheets.values.get(params).then(({data}) => {
 
     console.log(parsedValues)
 })
-

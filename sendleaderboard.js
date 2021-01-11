@@ -1,8 +1,11 @@
-const db = require("../models");
+const db = require("./app/models");
 const User = db.users;
 var nodemailer = require('nodemailer');
 const mongoose = require("mongoose");
-mongoose.connect('mongodb://localhost:27017/mike_db', {useNewUrlParser: true});
+
+require("dotenv").config();
+
+mongoose.connect('mongodb://localhost:27017/mike_db', {useNewUrlParser: true, useUnifiedTopology: true });
 
 var data = [];
 
@@ -49,14 +52,15 @@ User
       secure: false,
       requireTLS: true,
       auth: {
-        user: 'mikedavidmackenzie@gmail.com',
-        pass: ''
+        user: process.env["USER_EMAIL"],
+        pass: process.env["USER_PASS"]
       }
     });
+    console.log(process.env["USER_EMAIL"])
 
     var mailOptions = {
-      from: 'mikedavidmackenzie@gmail.com',
-      to: 'mike_mack7@hotmail.com',
+      from: process.env["USER_EMAIL"],
+      to: process.env["SEND_TO"],
       subject: 'subject test',
       text: data
     };
