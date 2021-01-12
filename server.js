@@ -2,7 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+const path = __dirname + '/app/views/';
+
 const app = express();
+
+app.use(express.static(path));
 
 require('dotenv').config()
 
@@ -11,12 +15,13 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
 app.use(bodyParser.json());
-
 app.use(bodyParser.urlencoded({ extended: true}));
 
 const db = require("./app/models");
+
+console.log(db.url);
+
 db.mongoose
   .connect(db.url, {
     useNewUrlParser: true,
@@ -31,7 +36,7 @@ db.mongoose
   });
 
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to the application" });
+  res.sendFile(path + "index.html");
 });
 
 require("./app/routes/user.routes")(app);

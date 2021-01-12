@@ -5,7 +5,9 @@ const mongoose = require("mongoose");
 
 require("dotenv").config();
 
-mongoose.connect('mongodb://localhost:27017/mike_db', {useNewUrlParser: true, useUnifiedTopology: true });
+const connection = db.url;
+
+mongoose.connect(connection, {useNewUrlParser: true, useUnifiedTopology: true });
 
 var data = [];
 
