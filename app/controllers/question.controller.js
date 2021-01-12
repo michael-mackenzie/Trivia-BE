@@ -27,7 +27,7 @@ exports.createQuestion = (req, res) => {
 
 exports.findSomeQuestions = (req, res) => {
   Question
-    .aggregate([{ $sample: { size: 3 }}])
+    .aggregate([{ $sample: { size: 15 }}])
     .exec(function(err, rsp) {
       res.send(rsp);
     });
@@ -39,5 +39,6 @@ exports.deleteAll = (req, res) => {
     .then(response => {
       res.send(response.data);
       console.log("deleted all")
-    });
+    })
+    .catch(err => res.send(err));
 }
