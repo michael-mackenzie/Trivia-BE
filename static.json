@@ -1,0 +1,7 @@
+{
+  "root": "app/views/",
+  "clean_urls": false,
+  "routes": {
+    "/**": "index.html"
+  }
+}
