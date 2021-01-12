@@ -35,7 +35,7 @@ db.mongoose
     process.exit();
   });
 
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(path + "index.html");
 });
 
